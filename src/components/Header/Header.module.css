@@ -1,0 +1,439 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: transform 0.1s ease;
+}
+
+.containerTwo {
+  background-image: url('https://co.malvaonline.com/cdn/shop/files/Banner_Destacado_1.webp?v=1750188365') !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.header.hidden {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+
+
+.banner {
+  background: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: var(--spacing-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.bannerText {
+  animation: marquee 20s linear infinite;
+  color: #000;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.logoMenu {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-dark);
+  text-decoration: none;
+}
+
+.menuButton {
+  color: #fff;
+  margin: 5%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+}
+
+.navMenu {
+  display: flex;
+  margin-left: 2rem;
+  list-style: none;
+  gap: var(--spacing-xl);
+}
+
+.navMenuTitle {
+  margin-top: 1.6rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.desktopNav {
+  display: flex;
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  padding: var(--spacing-sm) 0;
+  transition: var(--transition);
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.5px;
+}
+
+.navLink:hover {
+  color: var(--primary-color);
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  min-width: 200px;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: var(--transition);
+}
+
+.navItem:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdownItem {
+  display: block;
+  padding: var(--spacing-sm) 0;
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: var(--transition);
+}
+
+.dropdownItem:hover {
+  color: var(--primary-color);
+  padding-left: var(--spacing-sm);
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.actionButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  color: var(--text-dark);
+  transition: var(--transition);
+}
+
+.actionButton:hover {
+  color: var(--primary-color);
+}
+
+/* Mobile Menu */
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 25%;
+  height: 100vh;
+  background: white;
+  z-index: 1001;
+  transition: left 0.3s ease;
+  overflow-y: auto;
+}
+
+.mobileMenuRole {
+  text-transform: capitalize;
+  width: 50%;
+  font-weight: 400;
+  text-align: center;
+  font-size: var(--font-size-22px);
+  padding: 6px 0;
+  border-bottom: 2px solid #ccc;
+  cursor: pointer;
+}
+
+.mobileMenuRoleActive {
+  text-transform: capitalize;
+  width: 50%;
+  font-weight: 400;
+  text-align: center;
+  font-size: var(--font-size-22px);
+  padding: 6px 0;
+  background-color: #ededed;
+  border-bottom: 2px solid #666;
+  cursor: pointer;
+}
+
+.mobileMenuRole:hover {
+  border-bottom: 2px solid #666;
+  background-color: #ededed;
+  transition: 1s;
+}
+
+.mobileMenu.open {
+  left: 0;
+}
+
+.mobileMenuHeader {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+}
+
+.mobileMenuList {
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+  margin: 0;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.mobileMenuImage {
+  width: 100%;
+  height: 100%;
+}
+
+.mobileMenuList li {
+  cursor: pointer;
+}
+
+.mobileMenuItem {
+  flex: 1 1 45%;
+  min-width: 200px;
+  border: none;
+  list-style: none;
+}
+
+.mobileMenuLink {
+  display: block;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  border-bottom: 1px solid #ccc;
+  color: #3d3d3d;
+}
+
+.mobileMenuLink:hover {
+  border-bottom: 1px solid #666;
+  transition: 0.6s;
+}
+
+.mobileSubmenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobileSubmenu.open {
+  display: block;
+}
+
+.mobileSubmenuItem {
+  margin-bottom: 0.5rem;
+}
+
+.mobileSubmenuLink {
+  text-decoration: none;
+  color: #222;
+  font-size: 0.9rem;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+.mobileSubmenuLink:hover {
+  color: #666;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hero {
+  position: relative;
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.heroContent {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  z-index: 2;
+  color: #fff;
+  text-align: right;
+  max-width: 600px;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-lg);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.1;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-xl);
+  opacity: 0.9;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.herominSubtitle {
+  text-decoration: underline;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+
+  .containerTwo {
+    background-image: url('//co.malvaonline.com/cdn/shop/files/Banner_Destacado_1_1.webp?v=1750188376') !important;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat;
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+  }
+
+  .navMenu {
+    display: none;
+  }
+
+  .navActions {
+    gap: var(--spacing-lg);
+  }
+
+  .banner {
+    font-size: 0.75rem;
+    padding: var(--spacing-xs);
+  }
+
+  .mobileMenu {
+    width: 85%;
+    max-width: 200px;
+  }
+
+  .hero {
+    min-height: 70vh;
+  }
+
+  .heroContent {
+    padding: var(--spacing-xl);
+    text-align: center;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+
+  .heroActions {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .heroButton {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+@media (min-width: 769px) {
+  .hero {
+    min-height: 74vh;
+  }
+}
+
+@media (min-width: 1024px) {
+  .heroTitle {
+    font-size: 3.5rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,512 @@
+.hero {
+  position: relative;
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.heroContent {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  z-index: 2;
+  color: #fff;
+  text-align: left;
+  width: 600px;
+}
+
+.heroContentTwo {
+  position: absolute;
+  transform: translateY(-50%);
+  z-index: 2;
+  color: #fff;
+  text-align: right;
+  width: 600px;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.1;
+}
+
+.heroTitleTwo {
+  font-size: 3rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.1;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.heroSubtitleTwo {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.herominSubtitle {
+  text-decoration: underline;
+}
+
+.herominSubtitleTwo {
+  text-decoration: underline;
+}
+
+
+.sliderSection {
+  padding: 10px 0;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.sectionTitlePrimary {
+  font-size: 43px;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-family: didot;
+  font-weight: 300;
+  padding-top: 40px;
+  padding-bottom: 52px;
+}
+
+.sliderControls {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.sliderControlsCta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sliderControlsCta h2 {
+  font-size: 43px;
+  margin-bottom: 0.5rem;
+  font-family: didot;
+  font-weight: 300;
+}
+
+.sliderControlsCta p {
+  font-size: 14px;
+  font-family: "Avenir Next", sans-serif;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  color: #666;
+  letter-spacing: 0.02rem;
+  padding: 40px;
+}
+
+.sliderSectionContainer {
+  background-image: url('//co.malvaonline.com/cdn/shop/files/Banner_Destacado_2.webp?v=1750189261') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat;
+  max-width: 1920px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 5%;
+  height: 1100px;
+  margin: 0 auto;
+}
+
+.sliderSectionContainerTwo {
+  background-image: url('//co.malvaonline.com/cdn/shop/files/Destacado_5-Verdi.webp?v=1748553975') !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat;
+  max-width: 1920px;
+  display: flex;
+  align-items: center;
+  padding-left: 5%;
+  height: 750px;
+  margin: 0 auto;
+}
+
+.productText {
+  color: #000;
+}
+
+.sliderControlsCta a {
+  font-size: 16px;
+  padding: 10px;
+  font-family: "Avenir Next", sans-serif;
+  font-weight: 500;
+  color: #000;
+}
+
+.sliderButton {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border-color);
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.sliderButton:hover {
+  background: var(--primary-color);
+  color: #000;
+  border-color: #000;
+  transform: translateY(-2px);
+}
+
+.sliderButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.swiperContainer {
+  overflow: hidden;
+}
+
+.productCard {
+  background: white;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.productCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.productImageContainer {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.productCard:hover .productImage {
+  transform: scale(1.05);
+}
+
+.productTags {
+  position: absolute;
+  top: var(--spacing-sm);
+  left: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.productTag {
+  background: var(--primary-color);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.productTag.discount {
+  background: var(--error-color);
+}
+
+.productTag.new {
+  background: var(--success-color);
+}
+
+.productTag.premium {
+  background: #6c5ce7;
+}
+
+.productInfo {
+  padding: var(--spacing-lg);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.productBrand {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  margin-bottom: var(--spacing-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.productTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #7c7c7c;
+  margin-bottom: var(--spacing-md);
+  line-height: 1.3;
+  flex-grow: 1;
+}
+
+.productPricing {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-sm);
+}
+
+.productPrice {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #7c7c7c;
+}
+
+.productOriginalPrice {
+  font-size: 0.875rem;
+  color: #7c7c7c;
+  text-decoration: line-through;
+}
+
+.bannerContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1960px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.bannerItem {
+  flex: 1;
+  min-width: 300px;
+  height: 75vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: #fff solid 5px;
+}
+
+.bannerColumn {
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.bannerColumn h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+
+.bannerColumn p {
+  font-size: 1rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.bannerProducts {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.bannerProductsCard {
+  width: 470px;
+}
+
+.bannerProductsCard img {
+  width: 100%;
+  height: 100%;
+}
+
+.btn {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: underline;
+}
+
+.footerSection {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 40px;
+  background: #fafafa;
+  text-align: center;
+}
+
+.footerMain {
+  max-width: 200px;
+  margin-left: 20px;
+}
+
+.footerMain h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.footerMain p {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.4;
+}
+
+/* Swiper custom styles */
+.swiperContainer :global(.swiper-slide) {
+  height: auto;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+
+  .sliderSectionContainer {
+    position: relative;
+    background-image: url('//co.malvaonline.com/cdn/shop/files/Banner_Destacado_2_2.webp?v=1750189558') !important;
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    max-width: 1920px;
+    display: flex;
+    align-items: center;
+    padding-left: 5%;
+    height: 1100px;
+    margin: 0 auto;
+  }
+
+  .sliderSectionContainerTwo {
+    position: relative;
+    background-image: url('//co.malvaonline.com/cdn/shop/files/Destacado_5-Verdi_1.webp?v=1748553993') !important;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat;
+    max-width: 1920px;
+    display: flex;
+    align-items: center;
+    padding-right: 5%;
+    height: 750px;
+    margin: 0 auto;
+  }
+
+  .heroContent {
+    position: absolute;
+    bottom: 2rem;
+    left: 5%;
+    z-index: 2;
+    text-align: left;
+    max-width: 600px;
+    width: 100%;
+    padding: 0;
+    transform: none;
+  }
+
+  .heroTitle {
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.1;
+  }
+
+  .heroSubtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    font-weight: 300;
+    line-height: 1.4;
+  }
+
+  .herominSubtitle {
+    text-decoration: underline;
+  }
+
+  .heroContentTwo {
+    position: absolute;
+    bottom: 40px;
+    right: 5%;
+    transform: none;
+    z-index: 2;
+    color: #fff;
+    text-align: right;
+    width: 90%;
+    max-width: 600px;
+    padding: 0;
+  }
+
+  .heroTitleTwo {
+    font-size: 2rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.1;
+  }
+
+  .heroSubtitleTwo {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    font-weight: 300;
+    line-height: 1.4;
+  }
+
+  .herominSubtitleTwo {
+    text-decoration: underline;
+  }
+
+  .sliderSection {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .sliderControls {
+    align-self: flex-end;
+  }
+
+  .productInfo {
+    padding: var(--spacing-md);
+  }
+
+  .productTitle {
+    font-size: 0.875rem;
+  }
+}
