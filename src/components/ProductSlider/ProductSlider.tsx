@@ -18,21 +18,6 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
           alt={product.title}
           className={styles.productImage}
         />
-        {product.tags.length > 0 && (
-          <div className={styles.productTags}>
-            {product.tags.map((tag) => (
-              <span
-                key={tag}
-                className={`${styles.productTag} ${tag.toLowerCase() === 'descuento' ? styles.discount :
-                  tag.toLowerCase() === 'nuevo' ? styles.new :
-                    tag.toLowerCase() === 'premium' ? styles.premium : ''
-                  }`}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
       </div>
       <div className={styles.productInfo}>
         <div className={styles.productBrand}>{product.brand}</div>
@@ -86,7 +71,6 @@ const ProductSlider: React.FC = () => {
 
       <section className={styles.sliderSection}>
         <h1 className={styles.sectionTitlePrimary}>Styling with Malva</h1>
-
         <div className={styles.bannerProducts}>
           <div className={styles.bannerProductsCard}>
             <img src="//co.malvaonline.com/cdn/shop/files/Wedding_season_1.jpg?v=1750188663" alt="" />

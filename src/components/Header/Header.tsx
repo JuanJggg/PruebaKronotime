@@ -4,7 +4,6 @@ import styles from './Header.module.css';
 import { useScrollDirection } from '../../hooks/useScrollDirection';
 
 const Header: React.FC = () => {
-
   const mujerMenu = [
     'Ir a inicio',
     'New in',
@@ -25,11 +24,10 @@ const Header: React.FC = () => {
     'Calzado',
     'Outlet',
   ];
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [selectedRole, setSelectedRole] = useState<'Mujer' | 'Hombre'>('Mujer');
-  const scrollDirection = useScrollDirection();
-
-  
+  const { scrollDirection, isAtTop } = useScrollDirection();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -38,25 +36,25 @@ const Header: React.FC = () => {
   return (
     <>
       <div className={styles.containerTwo}>
-        <header className={`${styles.header} ${scrollDirection === 'down' ? styles.hidden : ''}`}>
+        <header className={`${styles.header} ${scrollDirection === 'down' ? styles.hidden : ''} ${!isAtTop ? styles.scrolled : ''}`}>
           {/* Promotional Banner */}
           <div className={styles.banner}>
             <div className={styles.bannerText}>
-              Suscribete hoy y recibe un 10% de descuento en tu primera compra
+              Suscríbete hoy y recibe un 10% de descuento en tu primera compra
             </div>
           </div>
 
           {/* Main Navigation */}
           <nav className={styles.navigation}>
-            <div className={`container ${styles.navContainer}`}>
-
+            <div className={styles.navContainer}>
               <div className={styles.desktopNav}>
                 {/* Mobile Menu Button */}
-                <button className={styles.menuButton} onClick={toggleMobileMenu}>
+                <button className={styles.menuButton} onClick={toggleMobileMenu} aria-label="Abrir menú">
                   <Menu size={24} />
                 </button>
+
                 {/* Logo */}
-                <a href="#" className={styles.logo}>
+                <a href="#" className={styles.logo} aria-label="Malva Department Store">
                   <svg width="100" height="70" viewBox="0 0 82 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.27925 36.6056H10.2157C11.067 36.6056 11.7055 37.1589 11.7055 38.0528C11.7055 38.8615 11.1521 39.4574 10.3434 39.4574H9.27925V36.6056ZM9.66234 36.7758V39.2872H10.3008C10.8542 39.2872 11.2798 38.819 11.2798 38.0528C11.2798 37.2441 10.8116 36.7758 10.2157 36.7758H9.66234Z" fill="currentColor"></path>
                     <path d="M13.6203 36.6056H15.6208V36.7758H14.0033V37.9251H15.4931V38.0953H14.0033V39.3297H15.6634V39.5H13.6203V36.6056Z" fill="currentColor"></path>
@@ -91,6 +89,7 @@ const Header: React.FC = () => {
                     <path d="M38.3939 2.51133C38.3939 1.10669 37.2446 0 35.8825 0C34.5205 0 33.3286 1.10669 33.3286 2.51133C33.3286 2.5539 33.3286 2.63903 33.3286 2.68159V8.12991H38.3513V2.68159C38.3939 2.59646 38.3939 2.5539 38.3939 2.51133Z" fill="currentColor"></path>
                   </svg>
                 </a>
+
                 {/* Desktop Navigation Menu */}
                 <div className={styles.navMenu}>
                   <p className={styles.navMenuTitle}>Mujer</p>
@@ -100,13 +99,13 @@ const Header: React.FC = () => {
 
               {/* Action Buttons */}
               <div className={styles.navActions}>
-                <button className={styles.actionButton}>
+                <button className={styles.actionButton} aria-label="Buscar">
                   <Search size={20} />
                 </button>
-                <button className={styles.actionButton}>
+                <button className={styles.actionButton} aria-label="Mi cuenta">
                   <User size={20} />
                 </button>
-                <button className={styles.actionButton}>
+                <button className={styles.actionButton} aria-label="Carrito de compras">
                   <ShoppingBag size={20} />
                 </button>
               </div>
@@ -115,20 +114,17 @@ const Header: React.FC = () => {
         </header>
 
         <section className={styles.hero}>
-          <div className="container">
-            <div className={styles.heroContent}>
-              <h1 className={styles.heroTitle}>
-                Stella McCartney
-              </h1>
-              <p className={styles.heroSubtitle}>
-                Conscious fashion that speaks of elegance and innovation
-              </p>
-              <p className={styles.herominSubtitle}>Shop Now</p>
-            </div>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>
+              Stella McCartney
+            </h1>
+            <p className={styles.heroSubtitle}>
+              Conscious fashion that speaks of elegance and innovation
+            </p>
+            <p className={styles.herominSubtitle}>Shop Now</p>
           </div>
         </section>
       </div>
-
 
       {/* Mobile Menu */}
       <div className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.open : ''}`}>
@@ -141,29 +137,32 @@ const Header: React.FC = () => {
             onClick={() => setSelectedRole('Hombre')}>
             <p>Hombre</p>
           </div>
-          <button className={styles.closeButton} onClick={toggleMobileMenu}>
+          <button className={styles.closeButton} onClick={toggleMobileMenu} aria-label="Cerrar menú">
             <X size={24} />
           </button>
         </div>
         <div>
           <ul className={styles.mobileMenuList}>
-            {(selectedRole === 'Mujer' ? mujerMenu : selectedRole === 'Hombre' ? hombreMenu : []).map((item) => (
-              <>
-                <li key={item} className={styles.mobileMenuItem}>
-                  <a href="#" className={styles.mobileMenuLink}>{item}</a>
-                </li>
-              </>
+            {(selectedRole === 'Mujer' ? mujerMenu : hombreMenu).map((item) => (
+              <li key={item} className={styles.mobileMenuItem}>
+                <a href="#" className={styles.mobileMenuLink}>{item}</a>
+              </li>
             ))}
-            <img src={selectedRole === 'Mujer' ? 'https://co.malvaonline.com/cdn/shop/files/Mujer_75504a9f-b071-4688-9ddd-f61f9bf58b15.webp?v=1749661857' : 'https://co.malvaonline.com/cdn/shop/files/Hombre_c04a43b9-3530-4445-9462-fa2c86acc78e.webp?v=1750112639'} alt="menu" className={styles.mobileMenuImage} />
+            <img
+              src={selectedRole === 'Mujer'
+                ? 'https://co.malvaonline.com/cdn/shop/files/Mujer_75504a9f-b071-4688-9ddd-f61f9bf58b15.webp?v=1749661857'
+                : 'https://co.malvaonline.com/cdn/shop/files/Hombre_c04a43b9-3530-4445-9462-fa2c86acc78e.webp?v=1750112639'
+              }
+              alt={`Imagen de ${selectedRole}`}
+              className={styles.mobileMenuImage}
+            />
           </ul>
         </div>
-      </div >
-
+      </div>
 
       {/* Overlay */}
-      < div
-        className={`${styles.overlay} ${isMobileMenuOpen ? styles.open : ''}`
-        }
+      <div
+        className={`${styles.overlay} ${isMobileMenuOpen ? styles.open : ''}`}
         onClick={toggleMobileMenu}
       />
     </>

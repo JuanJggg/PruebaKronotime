@@ -1,56 +1,70 @@
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
-  transition: transform 0.1s ease;
+  transition: all 0.3s ease;
+  background: transparent;
 }
 
-.containerTwo {
-  background-image: url('https://co.malvaonline.com/cdn/shop/files/Banner_Destacado_1.webp?v=1750188365') !important;
-  background-size: 100% 100% !important;
-  background-repeat: no-repeat;
-  max-width: 1920px;
-  margin: 0 auto;
+.header.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
 .header.hidden {
   transform: translateY(-100%);
-  transition: transform 0.3s ease-in-out;
 }
 
-
+.containerTwo {
+  background-image: url('https://co.malvaonline.com/cdn/shop/files/Banner_Destacado_1.webp?v=1750188365');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  max-width: 1920px;
+  aspect-ratio: 16/9;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
 
 .banner {
   background: var(--primary-color);
-  color: white;
+  color: #000;
   text-align: center;
-  padding: var(--spacing-sm);
   font-size: 0.875rem;
   font-weight: 500;
+  overflow: hidden;
 }
 
 .bannerText {
-  animation: marquee 20s linear infinite;
-  color: #000;
+  animation: marquee 9s linear infinite;
+  white-space: nowrap;
 }
 
 @keyframes marquee {
   0% {
     transform: translateX(100%);
   }
-
   100% {
     transform: translateX(-100%);
   }
 }
 
-
+.navigation {
+  position: relative;
+  z-index: 10;
+}
 
 .navContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
+  padding: var(--spacing-md) var(--spacing-lg);
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
 .logo {
@@ -58,6 +72,11 @@
   font-weight: bold;
   color: var(--primary-color);
   text-decoration: none;
+  z-index: 10;
+}
+
+.header.scrolled .logo {
+  color: var(--primary-dark);
 }
 
 .logoMenu {
@@ -65,15 +84,25 @@
   font-weight: bold;
   color: var(--primary-dark);
   text-decoration: none;
+  padding-left: 40px;
 }
 
 .menuButton {
   color: #fff;
-  margin: 5%;
   background: none;
   border: none;
   cursor: pointer;
   padding: var(--spacing-sm);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.header.scrolled .menuButton {
+  color: var(--primary-dark);
+}
+
+.menuButton:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .navMenu {
@@ -87,10 +116,25 @@
   margin-top: 1.6rem;
   cursor: pointer;
   color: #fff;
+  font-weight: 500;
+  font-family: var(--font-body-family);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+  padding: var(--spacing-sm) 0;
+}
+
+.header.scrolled .navMenuTitle {
+  color: var(--primary-dark);
+}
+
+.navMenuTitle:hover {
+  color: var(--accent-color);
 }
 
 .desktopNav {
   display: flex;
+  align-items: center;
 }
 
 .navLink {
@@ -154,12 +198,18 @@
   border: none;
   cursor: pointer;
   padding: var(--spacing-sm);
-  color: var(--text-dark);
+  color: #fff;
   transition: var(--transition);
+  border-radius: var(--border-radius);
+}
+
+.header.scrolled .actionButton {
+  color: var(--primary-dark);
 }
 
 .actionButton:hover {
-  color: var(--primary-color);
+  color: var(--accent-color);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* Mobile Menu */
@@ -167,41 +217,14 @@
   position: fixed;
   top: 0;
   left: -100%;
-  width: 25%;
+  width: 85%;
+  max-width: 400px;
   height: 100vh;
   background: white;
   z-index: 1001;
   transition: left 0.3s ease;
   overflow-y: auto;
-}
-
-.mobileMenuRole {
-  text-transform: capitalize;
-  width: 50%;
-  font-weight: 400;
-  text-align: center;
-  font-size: var(--font-size-22px);
-  padding: 6px 0;
-  border-bottom: 2px solid #ccc;
-  cursor: pointer;
-}
-
-.mobileMenuRoleActive {
-  text-transform: capitalize;
-  width: 50%;
-  font-weight: 400;
-  text-align: center;
-  font-size: var(--font-size-22px);
-  padding: 6px 0;
-  background-color: #ededed;
-  border-bottom: 2px solid #666;
-  cursor: pointer;
-}
-
-.mobileMenuRole:hover {
-  border-bottom: 2px solid #666;
-  background-color: #ededed;
-  transition: 1s;
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .mobileMenu.open {
@@ -213,6 +236,36 @@
   align-items: center;
   padding: var(--spacing-lg);
   border-bottom: 1px solid var(--border-color);
+  background: #f8f9fa;
+}
+
+.mobileMenuRole {
+  text-transform: capitalize;
+  width: 50%;
+  font-weight: 400;
+  text-align: center;
+  font-size: 1.125rem;
+  padding: var(--spacing-sm) 0;
+  border-bottom: 2px solid #ccc;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.mobileMenuRoleActive {
+  text-transform: capitalize;
+  width: 50%;
+  font-weight: 500;
+  text-align: center;
+  font-size: 1.125rem;
+  padding: var(--spacing-sm) 0;
+  background-color: #ededed;
+  border-bottom: 2px solid #666;
+  cursor: pointer;
+}
+
+.mobileMenuRole:hover {
+  border-bottom: 2px solid #666;
+  background-color: #ededed;
 }
 
 .closeButton {
@@ -220,47 +273,51 @@
   border: none;
   cursor: pointer;
   padding: var(--spacing-sm);
+  margin-left: auto;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.closeButton:hover {
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .mobileMenuList {
-  flex-wrap: wrap;
-  gap: 2rem;
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: var(--spacing-lg);
   margin: 0;
-  justify-content: space-between;
   list-style: none;
 }
 
 .mobileMenuImage {
   width: 100%;
-  height: 100%;
-}
-
-.mobileMenuList li {
-  cursor: pointer;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  margin-top: var(--spacing-lg);
 }
 
 .mobileMenuItem {
-  flex: 1 1 45%;
-  min-width: 200px;
   border: none;
   list-style: none;
 }
 
 .mobileMenuLink {
   display: block;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 1rem;
-  margin-bottom: 1rem;
-  padding: 0.5rem 0;
+  padding: var(--spacing-md) 0;
   text-decoration: none;
-  border-bottom: 1px solid #ccc;
-  color: #3d3d3d;
+  border-bottom: 1px solid #eee;
+  color: #333;
+  transition: var(--transition);
 }
 
 .mobileMenuLink:hover {
-  border-bottom: 1px solid #666;
-  transition: 0.6s;
+  color: var(--accent-color);
+  padding-left: var(--spacing-sm);
 }
 
 .mobileSubmenu {
@@ -279,14 +336,15 @@
 
 .mobileSubmenuLink {
   text-decoration: none;
-  color: #222;
+  color: #666;
   font-size: 0.9rem;
   display: inline-block;
   transition: color 0.2s ease;
+  padding: var(--spacing-xs) 0;
 }
 
 .mobileSubmenuLink:hover {
-  color: #666;
+  color: var(--accent-color);
 }
 
 .overlay {
@@ -308,79 +366,88 @@
 }
 
 .hero {
-  position: relative;
-  min-height: 10vh;
+  width: 100%;
+  height: 100%;
   display: flex;
-  align-items: center;
+  align-items: center;         /* Centra verticalmente */
+  justify-content: flex-end;   /* Alinea el contenido al borde derecho */
+  padding-right: var(--spacing-xl); /* Espacio a la derecha */
+  padding-left: var(--spacing-xl);  /* Opcional para balance */
+  position: relative;
+  background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
 }
 
 .heroContent {
-  position: absolute;
-  top: 50%;
-  right: 5%;
-  transform: translateY(-50%);
-  z-index: 2;
+  max-width: 600px;
+  width: 100%;
   color: #fff;
   text-align: right;
-  max-width: 600px;
+  z-index: 2;
 }
 
 .heroTitle {
-  font-size: 3rem;
+  font-size: 43px;
   font-weight: 700;
-  margin-bottom: var(--spacing-lg);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  line-height: 1.1;
+  align-content: center;
+  line-height: 40px;
 }
 
 .heroSubtitle {
-  font-size: 1.25rem;
-  margin-bottom: var(--spacing-xl);
-  opacity: 0.9;
-  font-weight: 300;
-  line-height: 1.4;
+  font-size: 14px;
+  line-height: normal;
 }
 
 .herominSubtitle {
   text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.herominSubtitle:hover {
+  color: var(--accent-color);
 }
 
 /* Mobile Responsive */
-@media (max-width: 768px) {
-
-  .containerTwo {
-    background-image: url('//co.malvaonline.com/cdn/shop/files/Banner_Destacado_1_1.webp?v=1750188376') !important;
-    background-size: 100% 100% !important;
-    background-repeat: no-repeat;
-    max-width: 1920px;
-    margin: 0 auto;
+@media (max-width: 1024px) {
+  .navMenu {
+    display: none;
+  }
+  
+  .hero {
+    justify-content: center;
+    text-align: center;
   }
 
   .logo {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    font-size: 1.25rem;
+  }
+  
+  .heroContent {
+    text-align: right;
+    max-width: 90%;
+  }
+}
 
+@media (max-width: 768px) {
+  .containerTwo {
+    background-image: url('//co.malvaonline.com/cdn/shop/files/Banner_Destacado_1_1.webp?v=1750188376');
+    aspect-ratio: 9/16;
   }
 
-  .navMenu {
-    display: none;
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.25rem;
   }
 
   .navActions {
-    gap: var(--spacing-lg);
+    gap: var(--spacing-sm);
   }
 
   .banner {
@@ -388,52 +455,47 @@
     padding: var(--spacing-xs);
   }
 
-  .mobileMenu {
-    width: 85%;
-    max-width: 200px;
-  }
-
   .hero {
-    min-height: 70vh;
+    padding: var(--spacing-lg);
+    align-items: flex-end;
+    justify-content: end;
   }
 
   .heroContent {
-    padding: var(--spacing-xl);
-    text-align: center;
-  }
-
-  .heroTitle {
-    font-size: 2rem;
-  }
-
-  .heroSubtitle {
-    font-size: 1rem;
-  }
-
-  .heroActions {
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .heroButton {
     width: 100%;
-    max-width: 280px;
+    bottom: 20px;
   }
-}
 
-@media (min-width: 769px) {
-  .hero {
-    min-height: 74vh;
-  }
-}
-
-@media (min-width: 1024px) {
   .heroTitle {
-    font-size: 3.5rem;
+    font-size: 22px;
   }
 
   .heroSubtitle {
-    font-size: 1.5rem;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobileMenu {
+    width: 100%;
+    max-width: none;
+  }
+  
+  .navContainer {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+  
+  .heroContent {
+    padding: var(--spacing-md);
+  }
+}
+
+@media (min-width: 1200px) {
+  .containerTwo {
+    max-width: 1920px;
+  }
+  
+  .heroContent {
+    max-width: 700px;
   }
 }

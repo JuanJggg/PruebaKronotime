@@ -8,10 +8,8 @@
 }
 
 .heroContent {
-  position: absolute;
   top: 50%;
   left: 5%;
-  transform: translateY(-50%);
   z-index: 2;
   color: #fff;
   text-align: left;
@@ -19,37 +17,36 @@
 }
 
 .heroContentTwo {
-  position: absolute;
-  transform: translateY(-50%);
   z-index: 2;
   color: #fff;
   text-align: right;
-  width: 600px;
+  width: 42%;
+  position: absolute;
 }
 
 .heroTitle {
-  font-size: 3rem;
+  font-size: 43px;
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   line-height: 1.1;
 }
 
 .heroTitleTwo {
-  font-size: 3rem;
+  font-size: 43px;
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   line-height: 1.1;
 }
 
 .heroSubtitle {
-  font-size: 1.25rem;
+  font-size: 14px;
   opacity: 0.9;
   font-weight: 300;
   line-height: 1.4;
 }
 
 .heroSubtitleTwo {
-  font-size: 1.25rem;
+  font-size: 14px;
   opacity: 0.9;
   font-weight: 300;
   line-height: 1.4;
@@ -57,10 +54,12 @@
 
 .herominSubtitle {
   text-decoration: underline;
+  font-size: 14px;
 }
 
 .herominSubtitleTwo {
   text-decoration: underline;
+  font-size: 14px;
 }
 
 
@@ -122,15 +121,14 @@
 
 .sliderSectionContainer {
   background-image: url('//co.malvaonline.com/cdn/shop/files/Banner_Destacado_2.webp?v=1750189261') !important;
-  background-size: cover !important;
-  background-position: center center !important;
+  background-size: 100% 100%;
+  background-position: center center;
   background-repeat: no-repeat;
   max-width: 1920px;
-  width: 100%;
+  aspect-ratio: 16/9;
   display: flex;
   align-items: center;
   padding-left: 5%;
-  height: 1100px;
   margin: 0 auto;
 }
 
@@ -139,15 +137,24 @@
   background-size: 100% 100% !important;
   background-repeat: no-repeat;
   max-width: 1920px;
+  aspect-ratio: 12/5;
   display: flex;
   align-items: center;
   padding-left: 5%;
-  height: 750px;
   margin: 0 auto;
+  position: relative;
 }
 
 .productText {
   color: #000;
+}
+
+.heroContentTwo {
+  z-index: 2;
+  color: #fff;
+  text-align: right;
+  width: 600px;
+  position: static;
 }
 
 .sliderControlsCta a {
@@ -208,12 +215,13 @@
   position: relative;
   aspect-ratio: 3/4;
   overflow: hidden;
+  height: 800px;
 }
 
 .productImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: 100% 100%;
   transition: var(--transition);
 }
 
@@ -297,24 +305,21 @@
 
 .bannerContainer {
   display: flex;
-  flex-wrap: wrap;
   width: 100%;
-  max-width: 1960px;
+  max-width: 1920px;
   margin: 0 auto;
-  padding: 0 var(--spacing-md);
+  gap: 10px;
 }
 
 .bannerItem {
   flex: 1;
-  min-width: 300px;
-  height: 75vh;
   background-size: cover;
   background-position: center;
+  aspect-ratio: 2/3;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: #fff solid 5px;
 }
 
 .bannerColumn {
@@ -338,13 +343,15 @@
 .bannerProducts {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 4rem;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
 }
 
 .bannerProductsCard {
-  width: 470px;
+  width: 100%;
 }
 
 .bannerProductsCard img {
@@ -363,17 +370,16 @@
 
 .footerSection {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-evenly;
-  flex-wrap: wrap;
-  padding: 40px;
+  gap: 20px;
+  padding: 40px 10px;
   background: #fafafa;
   text-align: center;
 }
 
 .footerMain {
   max-width: 200px;
-  margin-left: 20px;
 }
 
 .footerMain h3 {
@@ -400,13 +406,13 @@
   .sliderSectionContainer {
     position: relative;
     background-image: url('//co.malvaonline.com/cdn/shop/files/Banner_Destacado_2_2.webp?v=1750189558') !important;
-    background-size: cover !important;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
+    aspect-ratio: 9/16;
     max-width: 1920px;
     display: flex;
-    align-items: center;
+    align-items: end;
     padding-left: 5%;
-    height: 1100px;
     margin: 0 auto;
   }
 
@@ -415,16 +421,16 @@
     background-image: url('//co.malvaonline.com/cdn/shop/files/Destacado_5-Verdi_1.webp?v=1748553993') !important;
     background-size: 100% 100% !important;
     background-repeat: no-repeat;
+    align-items: end;
+    justify-content: flex-end;
     max-width: 1920px;
+    aspect-ratio: 2/3;
     display: flex;
-    align-items: center;
     padding-right: 5%;
-    height: 750px;
     margin: 0 auto;
   }
 
   .heroContent {
-    position: absolute;
     bottom: 2rem;
     left: 5%;
     z-index: 2;
@@ -435,53 +441,48 @@
     transform: none;
   }
 
+  .footerSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .footerMain {
+    width: 100%;
+    display: block;
+  }
+
   .heroTitle {
-    font-size: 3rem;
-    font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    line-height: 1.1;
+    font-size: 22px;
   }
 
   .heroSubtitle {
-    font-size: 1.25rem;
-    opacity: 0.9;
-    font-weight: 300;
-    line-height: 1.4;
+    font-size: 16px;
+
   }
 
   .herominSubtitle {
     text-decoration: underline;
+    font-size: 14px;
   }
 
   .heroContentTwo {
-    position: absolute;
-    bottom: 40px;
-    right: 5%;
-    transform: none;
-    z-index: 2;
-    color: #fff;
-    text-align: right;
-    width: 90%;
-    max-width: 600px;
-    padding: 0;
+    align-items: end;
+    justify-content: flex-end;
   }
 
   .heroTitleTwo {
-    font-size: 2rem;
-    font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    line-height: 1.1;
+    font-size: 22px;
   }
 
   .heroSubtitleTwo {
-    font-size: 1.25rem;
-    opacity: 0.9;
-    font-weight: 300;
-    line-height: 1.4;
+    font-size: 16px;
   }
 
   .herominSubtitleTwo {
     text-decoration: underline;
+    font-size: 16px;
   }
 
   .sliderSection {
@@ -508,5 +509,19 @@
 
   .productTitle {
     font-size: 0.875rem;
+  }
+
+  .bannerContainer {
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+  }
+
+  .bannerItem {
+    width: 100%;
+    flex: none;
+  }
+
+  .bannerProducts {
+    display: block;
   }
 }

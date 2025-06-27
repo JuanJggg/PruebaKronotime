@@ -14,6 +14,7 @@ body {
 
 /* CSS Variables for consistent theming */
 :root {
+  --font-body-family: "Avenir Next", sans-serif;
   --primary-color: #fff;
   --primary-dark: #000;
   --secondary-color: #f8f9fa;
