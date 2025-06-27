@@ -80,6 +80,7 @@ const Footer: React.FC = () => {
     <footer className={styles.footer}>
       <div className="container">
         <div className={styles.footerMain}>
+          
           {/* Sección de redes sociales */}
           <FooterSection title="Síguenos" sectionKey="social">
             <ul className={styles.socialList}>
