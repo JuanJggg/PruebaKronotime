@@ -261,7 +261,8 @@
 }
 
 .productBrand {
-  font-size: 0.875rem;
+  font-size: 12px;
+  font-weight: bold;
   color: var(--text-light);
   margin-bottom: var(--spacing-xs);
   text-transform: uppercase;
@@ -269,7 +270,7 @@
 }
 
 .productTitle {
-  font-size: 1rem;
+  font-size: 12px;
   font-weight: 500;
   color: #7c7c7c;
   margin-bottom: var(--spacing-md);
@@ -525,10 +526,22 @@
     align-items: center;
   }
 
+  .sectionTitlePrimary {
+    font-size: 22px;
+  }
+
+
   
-  .sliderControlsCta h2,
   .sliderControlsCta p,
   .sliderControlsCta a {
     width: 100%;
+  }
+
+  .sliderControlsCta h2{
+    font-size: 22px;
+  }
+
+  .productImageContainer {
+    height: 100%;
   }
 }
