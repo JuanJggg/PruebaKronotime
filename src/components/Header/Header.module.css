@@ -493,10 +493,6 @@
     max-width: none;
   }
 
-  .navContainer {
-    padding: var(--spacing-xs) var(--spacing-sm);
-  }
-
   .heroContent {
     padding: var(--spacing-md);
   }
