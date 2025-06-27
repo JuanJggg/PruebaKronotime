@@ -21,7 +21,7 @@
   color: #fff;
   text-align: right;
   width: 42%;
-  position: absolute;
+  position:absolute;
 }
 
 .heroTitle {
@@ -147,14 +147,6 @@
 
 .productText {
   color: #000;
-}
-
-.heroContentTwo {
-  z-index: 2;
-  color: #fff;
-  text-align: right;
-  width: 600px;
-  position: static;
 }
 
 .sliderControlsCta a {
@@ -417,7 +409,6 @@
   }
 
   .sliderSectionContainerTwo {
-    position: relative;
     background-image: url('//co.malvaonline.com/cdn/shop/files/Destacado_5-Verdi_1.webp?v=1748553993') !important;
     background-size: 100% 100% !important;
     background-repeat: no-repeat;
@@ -468,8 +459,10 @@
   }
 
   .heroContentTwo {
-    align-items: end;
-    justify-content: flex-end;
+    color: #fff;
+    text-align: right;
+    width: 600px;
+    position: static;
   }
 
   .heroTitleTwo {

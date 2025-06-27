@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Menu, X, Search, ShoppingBag, User } from 'lucide-react';
+import { Menu, X, Search, ShoppingBag, User, ChevronRight } from 'lucide-react';
 import styles from './Header.module.css';
 import { useScrollDirection } from '../../hooks/useScrollDirection';
 
 const Header: React.FC = () => {
+  // Menús de navegación para diferentes categorías
   const mujerMenu = [
     'Ir a inicio',
     'New in',
@@ -25,8 +26,11 @@ const Header: React.FC = () => {
     'Outlet',
   ];
 
+  // Estados para controlar el menú móvil y la categoría seleccionada
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [selectedRole, setSelectedRole] = useState<'Mujer' | 'Hombre'>('Mujer');
+
+  // Hook personalizado para detectar dirección de scroll y posición
   const { scrollDirection, isAtTop } = useScrollDirection();
 
   const toggleMobileMenu = () => {
@@ -35,25 +39,26 @@ const Header: React.FC = () => {
 
   return (
     <>
+      {/* Container principal con imagen de fondo responsiva */}
       <div className={styles.containerTwo}>
         <header className={`${styles.header} ${scrollDirection === 'down' ? styles.hidden : ''} ${!isAtTop ? styles.scrolled : ''}`}>
-          {/* Promotional Banner */}
+          {/* Banner promocional con animación marquee */}
           <div className={styles.banner}>
             <div className={styles.bannerText}>
               Suscríbete hoy y recibe un 10% de descuento en tu primera compra
             </div>
           </div>
 
-          {/* Main Navigation */}
+          {/* Navegación principal */}
           <nav className={styles.navigation}>
             <div className={styles.navContainer}>
               <div className={styles.desktopNav}>
-                {/* Mobile Menu Button */}
+                {/* Botón de menú hamburguesa para móvil */}
                 <button className={styles.menuButton} onClick={toggleMobileMenu} aria-label="Abrir menú">
                   <Menu size={24} />
                 </button>
 
-                {/* Logo */}
+                {/* Logo SVG con diseño personalizado */}
                 <a href="#" className={styles.logo} aria-label="Malva Department Store">
                   <svg width="100" height="70" viewBox="0 0 82 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.27925 36.6056H10.2157C11.067 36.6056 11.7055 37.1589 11.7055 38.0528C11.7055 38.8615 11.1521 39.4574 10.3434 39.4574H9.27925V36.6056ZM9.66234 36.7758V39.2872H10.3008C10.8542 39.2872 11.2798 38.819 11.2798 38.0528C11.2798 37.2441 10.8116 36.7758 10.2157 36.7758H9.66234Z" fill="currentColor"></path>
@@ -90,14 +95,14 @@ const Header: React.FC = () => {
                   </svg>
                 </a>
 
-                {/* Desktop Navigation Menu */}
+                {/* Menú de navegación desktop - solo visible en pantallas grandes */}
                 <div className={styles.navMenu}>
                   <p className={styles.navMenuTitle}>Mujer</p>
                   <p className={styles.navMenuTitle}>Hombre</p>
                 </div>
               </div>
 
-              {/* Action Buttons */}
+              {/* Botones de acción: búsqueda, usuario, carrito */}
               <div className={styles.navActions}>
                 <button className={styles.actionButton} aria-label="Buscar">
                   <Search size={20} />
@@ -113,6 +118,7 @@ const Header: React.FC = () => {
           </nav>
         </header>
 
+        {/* Hero section con contenido superpuesto sobre imagen de fondo */}
         <section className={styles.hero}>
           <div className={styles.heroContent}>
             <h1 className={styles.heroTitle}>
@@ -126,8 +132,9 @@ const Header: React.FC = () => {
         </section>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Menú móvil deslizable desde la izquierda */}
       <div className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.open : ''}`}>
+        {/* Header del menú móvil con tabs para Mujer/Hombre */}
         <div className={styles.mobileMenuHeader}>
           <div className={`${styles.mobileMenuRole} ${selectedRole === 'Mujer' ? styles.mobileMenuRoleActive : ''}`}
             onClick={() => setSelectedRole('Mujer')}>
@@ -141,13 +148,19 @@ const Header: React.FC = () => {
             <X size={24} />
           </button>
         </div>
+
+        {/* Lista de navegación dinámica según categoría seleccionada */}
         <div>
           <ul className={styles.mobileMenuList}>
             {(selectedRole === 'Mujer' ? mujerMenu : hombreMenu).map((item) => (
               <li key={item} className={styles.mobileMenuItem}>
-                <a href="#" className={styles.mobileMenuLink}>{item}</a>
+                <a href="#" className={styles.mobileMenuLink}>
+                  {item}
+                  <ChevronRight className={styles.chevronRight} />
+                </a>
               </li>
             ))}
+            {/* Imagen promocional que cambia según la categoría */}
             <img
               src={selectedRole === 'Mujer'
                 ? 'https://co.malvaonline.com/cdn/shop/files/Mujer_75504a9f-b071-4688-9ddd-f61f9bf58b15.webp?v=1749661857'
@@ -160,7 +173,7 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Overlay */}
+      {/* Overlay semitransparente para cerrar el menú móvil */}
       <div
         className={`${styles.overlay} ${isMobileMenuOpen ? styles.open : ''}`}
         onClick={toggleMobileMenu}

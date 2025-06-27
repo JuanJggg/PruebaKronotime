@@ -1,19 +1,25 @@
 import React, { useState } from 'react';
-import { ChevronDown,Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
+import { ChevronDown, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import styles from './Footer.module.css';
 
 
 const Footer: React.FC = () => {
+  // Estado para controlar qué secciones están expandidas en móvil
   const [openSections, setOpenSections] = useState<string[]>([
     'social',
     'customer',
     'about',
     'newsletter'
   ]);
+
+  // Estados del formulario de newsletter
   const [email, setEmail] = useState('');
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [showError, setShowError] = useState(false);
 
+  /**
+ * Toggle para expandir/contraer secciones en móvil
+ */
   const toggleSection = (sectionName: string) => {
     setOpenSections(prev =>
       prev.includes(sectionName)
@@ -22,6 +28,10 @@ const Footer: React.FC = () => {
     );
   };
 
+    /**
+   * Manejo del envío del formulario de newsletter
+   * Valida términos y condiciones antes de procesar
+   */
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -31,15 +41,19 @@ const Footer: React.FC = () => {
     }
 
     setShowError(false);
-    // Here you would typically send the email to your backend
+    // Aquí se enviaría el email al backend
     console.log('Newsletter subscription:', { email, acceptTerms });
 
-    // Reset form
+    // Reset del formulario
     setEmail('');
     setAcceptTerms(false);
     alert('¡Gracias por suscribirte a nuestro newsletter!');
   };
 
+   /**
+   * Componente reutilizable para secciones expandibles
+   * Maneja el estado de apertura y la animación del chevron
+   */
   const FooterSection: React.FC<{
     title: string;
     children: React.ReactNode;
@@ -66,7 +80,7 @@ const Footer: React.FC = () => {
     <footer className={styles.footer}>
       <div className="container">
         <div className={styles.footerMain}>
-          {/* Social Media Section */}
+          {/* Sección de redes sociales */}
           <FooterSection title="Síguenos" sectionKey="social">
             <ul className={styles.socialList}>
               <li>
@@ -92,7 +106,7 @@ const Footer: React.FC = () => {
             </ul>
           </FooterSection>
 
-          {/* Customer Service Section */}
+          {/* Sección de servicio al cliente */}
           <FooterSection title="Servicio al Cliente" sectionKey="customer">
             <ul className={styles.footerList}>
               <li><a href="#" className={styles.footerLink}>Centro de Ayuda</a></li>
@@ -104,7 +118,7 @@ const Footer: React.FC = () => {
             </ul>
           </FooterSection>
 
-          {/* About Us Section */}
+          {/* Sección acerca de nosotros */}
           <FooterSection title="Quiénes Somos" sectionKey="about">
             <ul className={styles.footerList}>
               <li><a href="#" className={styles.footerLink}>Nuestra Historia</a></li>
@@ -115,13 +129,14 @@ const Footer: React.FC = () => {
             </ul>
           </FooterSection>
 
-          {/* Newsletter Section */}
+          {/* Sección de newsletter con formulario */}
           <FooterSection title="Newsletter" sectionKey="newsletter">
             <p style={{ marginBottom: 'var(--spacing-md)', fontSize: '0.875rem', color: '#adb5bd' }}>
               Suscríbete y recibe las últimas ofertas y novedades <br />
               Regístrate para recibir 10% de descuento en tu primera orden y ofertas exclusivas a lo largo del año.
             </p>
 
+            {/* Radio buttons para selección de género */}
             <div className={styles.checkboxContainerTwo}>
               <label>
                 <input type="radio" name="genero" value="mujer" />
@@ -136,6 +151,8 @@ const Footer: React.FC = () => {
                 Niño
               </label>
             </div>
+
+            {/* Formulario de suscripción */}
             <form className={styles.newsletterForm} onSubmit={handleNewsletterSubmit}>
               <input
                 type="email"
@@ -146,6 +163,7 @@ const Footer: React.FC = () => {
                 required
               />
 
+              {/* Checkbox de términos y condiciones */}
               <div className={styles.checkboxContainer}>
                 <input
                   type="checkbox"
@@ -162,12 +180,14 @@ const Footer: React.FC = () => {
                 </label>
               </div>
 
+              {/* Mensaje de error si no acepta términos */}
               {showError && (
                 <div className={styles.errorMessage}>
                   Debes aceptar los términos para continuar
                 </div>
               )}
 
+              {/* Botón de suscripción con validación */}
               <button
                 type="submit"
                 className={styles.newsletterButton}
@@ -179,7 +199,7 @@ const Footer: React.FC = () => {
           </FooterSection>
         </div>
 
-        {/* Footer Bottom */}
+        {/* Footer inferior con enlaces legales */}
         <div className={styles.footerBottom}>
           <div className={styles.footerBottomLinks}>
             <a href="#" className={styles.footerBottomLink}>Política de Tratamiento de Datos</a>
@@ -192,6 +212,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
+      {/* Estilos inline para comportamiento responsive */}
       <style>{`
         @media (min-width: 769px) {
           .mobile-only { display: none !important; }
