@@ -107,7 +107,7 @@ const Header: React.FC = () => {
                 <button className={styles.actionButton} aria-label="Buscar">
                   <Search size={20} />
                 </button>
-                <button className={styles.actionButton} aria-label="Mi cuenta">
+                <button className={`${styles.actionButton} ${styles.hideOnMobile}`} aria-label="Mi cuenta">
                   <User size={20} />
                 </button>
                 <button className={styles.actionButton} aria-label="Carrito de compras">
